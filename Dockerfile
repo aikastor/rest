@@ -1,9 +1,10 @@
-FROM node:current-slim
+FROM node:slim
+WORKDIR /app
+COPY package*.json ./
 
-WORKDIR /usr/src/app
-COPY package.json .
 RUN yarn install
+COPY . /app
 
-EXPOSE 8000
-CMD [ "yarn", "dev" ]
-COPY . .
+EXPOSE 8080
+CMD ["yarn", "dev"]
+
